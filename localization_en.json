@@ -1,0 +1,160 @@
+{
+  "supply": {
+    "measurements": {
+      "weight": "kg",
+      "growth": "cm"
+    },
+    "date": {
+      "seconds": "sec"
+    }
+  },
+  "navigation": {
+    "next": "NEXT",
+    "skip": "SKIP",
+    "add": "ADD",
+    "publish": "PUBLISH",
+    "save": "SAVE",
+    "ok": "OK"
+  },
+  "greetings": {
+    "first": {
+      "mainLabel": "",
+      "detailLabel": ""
+    },
+    "second": {
+      "mainLabel": "",
+      "detailLabel": ""
+    },
+    "third": {
+      "mainLabel": "",
+      "detailLabel": ""
+    }
+  },
+  "registation": {
+    "login": {
+      "controllerTitle": "",
+      "emailPlaceholder": "",
+      "passwordPlaceholder": "",
+      "forgotPassword": ""
+    },
+    "email": {
+      "controllerTitle": "",
+      "emailPlaceholder": "",
+      "passwordPlaceholder": "",
+      "facebook": "",
+      "infoLabel": "",
+      "infoLabelAttentionTermsOfUse": "",
+      "infoLabelAttentionPrivatePolicy": ""
+    },
+    "aboutMe": {
+      "controllerTitle": "",
+      "namePlaceholder": "",
+      "familyPlaceholder": "",
+      "placePlacholder": "",
+      "photoLabel": "",
+      "infoLabel": ""
+    },
+    "aboutBaby": {
+      "controllerTitle": "",
+      "namePlaceholder": "",
+      "familyPlaceholder": "",
+      "datePlaceholder": "",
+      "weightPlaceholder": "",
+      "growthPlaceholder": "",
+      "placePlacholder": "",
+      "photoLabel": "",
+      "infoLabel": ""
+    }
+  },
+  "settings": {
+    "tabBar": {
+      "babyTitle": "",
+      "familyTitle": "",
+      "proTitle": ""
+    },
+    "baby": {
+      "photoLabel": "",
+      "newControllerTitle": ""
+    },
+    "family": {
+      "namePlaceholderDetail": "",
+      "deleteRelativeTitle": "",
+      "newControllerTitle": "",
+      "newNamePlaceholder": "",
+      "newEmailPlaceholder": "",
+      "newFamilyPlaceholder": ""
+    },
+    "proAccount": {
+      "free": {
+        "main": "",
+        "detail": "",
+        "perDay": "",
+        "proAccount": "",
+        "getButtonMain": "",
+        "getButtonDetail": ""
+      },
+      "pro": {
+        "main": "",
+        "detail": "",
+        "storage": "",
+        "change": "",
+        "cancel": ""
+      },
+      "subcription": {
+        "change": {
+          "monthly": "",
+          "annually": "",
+          "info": ""
+        },
+        "cancel": {
+          "main": "",
+          "detail": "",
+          "stop": "",
+          "nope": ""
+        }
+      }
+    }
+  },
+  "events": {
+    "info": {
+      "controllerTitle": "",
+      "publishingProcessTitle": "",
+      "titlePlaceholder": "",
+      "detailPlaceholder": "",
+      "datePlaceholder": "",
+      "placePlacholder": "",
+      "keyMomentPlaceholder": ""
+    },
+    "add": {
+      "mainController": {
+        "video": "",
+        "audio": "",
+        "text": ""
+      },
+      "video": {
+        "cameraRollControllerTitle": "",
+        "chooseControllerTitle": ""
+      },
+      "audio": {
+        "cropControllerTitle": ""
+      }
+    },
+    "edit": {
+      "eventControllerTitle": "",
+      "titleControllerTitle": "",
+      "mapControllerTitle": "",
+      "dateControllerTitle": "",
+      "deleteTitle": "",
+      "keyMomentControllerTitle": ""
+    },
+    "view": {
+      "shareTitle": "",
+      "editTitle": ""
+    },
+    "feed": {
+      "video": "",
+      "audio": "",
+      "note": ""
+    }
+  }
+}
