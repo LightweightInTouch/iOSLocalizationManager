@@ -100,32 +100,6 @@ def hashOfLocalizations(options)
   result
 end
 
-def outputToHFile(file,options)
-
-  write_to_file = File.open(file,"w")  
-
-  hash = options[:hash_of_localizations]
-  hash.each do |key,value|
-    stringToOutput = '+ (NSString *)get'+key+'String'+';'
-    # pp stringToOutput
-    write_to_file.write(stringToOutput + %Q'\n')
-  end
-
-end
-
-def outputToMFile(file,options)
-  write_to_file = File.open(file,"w")
-  hash = options[:hash_of_localizations]
-  hash.each do |key,value|
-    strings_key = toDashesFromCamel(key)
-    table_key   = firstUpcaseWord(key) + 'LocalizationTable'
-    stringToOutput = '+ (NSString *)get'+key+'String' + '{' + %Q'return getStringFromTable(#{table_key},"#{strings_key}");}'
-
-    pp stringToOutput
-    write_to_file.write(stringToOutput + %Q'\n')
-  end
-end
-
 def outputToFiles(options)
   write_to_h_file = File.open(getLocalizationHFile,"w")
   write_to_m_file = File.open(getLocalizationMFile,"w")  
@@ -137,14 +111,14 @@ def outputToFiles(options)
     table_key   = firstUpcaseWord(key) + 'LocalizationTable'
     stringsToOutput = '+ (NSString *)get'+key+'String'
     stringsToOutputH = stringsToOutput + ';'
-    stringsToOutputM = stringsToOutput + '{' + %Q'return getStringFromTable(#{table_key},"#{strings_key}");}'
+    stringsToOutputM = stringsToOutput + '{' + %Q'return getStringFromTable(#{table_key},\@"#{strings_key}");}'
 
     unless hash_of_files.has_key?(table_key)
       hash_of_files[table_key] = 
       {"en"=>
-        File.open(File.expand_path(table_key,options[:local_en_directory]),"w"),
+        File.open(File.expand_path(table_key+'.strings',options[:local_en_directory]),"w"),
         "ru"=>
-        File.open(File.expand_path(table_key,options[:local_ru_directory]),"w")
+        File.open(File.expand_path(table_key+'.strings',options[:local_ru_directory]),"w")
       }
     end
 
