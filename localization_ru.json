@@ -1,7 +1,7 @@
 {
   "supply": {
     "measurements": {
-      "weight": "кг",
+      "weight": {"ru":"кг","en":"kg"},
       "growth": "см"
     },
     "date": {

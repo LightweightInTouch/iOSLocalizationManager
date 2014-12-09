@@ -1,7 +1,6 @@
 {
   "supply": {
     "measurements": {
-      "weight": "kg",
       "growth": "cm"
     },
     "date": {
