@@ -193,8 +193,7 @@ def outputToSwiftFile(file,options)
   write_to_file.write(%Q'class #{getClassName}: NSObject {\n\n')
 
   # add common functions
-  write_to_file.write(%Q'static func getStringFromTable(tableName: String, key: String){return NSLocalizedStringFromTable(key, tableName, "")} -> String\n')
-  write_to_file.write(%Q'static func getStringFromTableWithKey(tableName: String, key: String){return NSLocalizedStringFromTable(key, tableName, "")} -> String\n')
+  write_to_file.write(%Q'class func getStringFromTable(tableName: String, key: String) -> String {return NSLocalizedString(key, tableName: tableName, value:"", comment:"")}\n')
   write_to_file.write("\n")
   # add common localization strings (table names)
   sorted_hash_keys.collect{ |k| firstUpcaseWord(k) }.uniq.each do |key|
@@ -208,9 +207,9 @@ def outputToSwiftFile(file,options)
     table_id  = firstUpcaseWord(key)
     table_key = table_id + 'LocalizationTable'
     function_name = 'get' + key + 'String'
-    stringsToOutput = 'static func ' + function_name + ' -> String '
+    stringsToOutput = 'class func ' + function_name + '()' + ' -> String '
 
-    stringsToOutputS = stringsToOutput + '{' + %Q'return self.getStringFromTable(#{table_key},"#{strings_key}")}'
+    stringsToOutputS = stringsToOutput + '{' + %Q'return getStringFromTable(#{table_key},key:"#{strings_key}")}'
     write_to_file.write(stringsToOutputS + %Q(\n))
   end
 
