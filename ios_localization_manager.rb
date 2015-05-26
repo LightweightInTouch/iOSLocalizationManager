@@ -289,9 +289,12 @@ def MainWork (options)
   [:local_en,:local_ru].each { |local|
     file_path = options[local]
     source_path = getCorrectFilePath(options[:source], options)
-    unless File.exists?(file_path)
-      FileUtils.copy(source_path,file_path)
-    end
+    # more complex solution here
+
+    # put more complex check later and see, which file was modified later
+    # unless File.exists?(file_path)
+    FileUtils.copy(source_path,file_path)
+    # end
   }
 
   # create localization directories
@@ -307,6 +310,11 @@ def MainWork (options)
 
   options[:hash_of_localizations] = hashOfLocalizations(options)
   options[:hash_of_localizations_sorted_keys] = options[:hash_of_localizations].keys.sort
+
+  if options[:inspection]
+    debug("I have options: #{options}", options)
+  end
+
   outputToFiles(options)
 
 
@@ -347,7 +355,6 @@ OptionParser.new do |opts|
   opts.on('-o', '--output_log OUTPUT', 'Logger output stream') {|v| options[:output_stream] = v}
   opts.on('-d', '--dry_run', 'Dry run to see all options') {|v| options[:dry_run] = v}
   opts.on('-i', '--inspection', 'Inspection of all items, like tests'){|v| options[:inspection] = v}
-
   # help
   opts.on('-h', '--help', 'Help option') { HelpMessage(opts); exit()}
 end.parse!
