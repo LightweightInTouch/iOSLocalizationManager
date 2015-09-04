@@ -159,19 +159,19 @@ You could create JSON as this one:
 	"firstAndSecond" : {
 		"one" : {
 			"en" : "one",
-			"ru" : "один"
+			"fr" : "un"
 		},
 		"two" : {
 			"en" : "two",
-			"ru" : "два"
+			"fr" : "deux"
 		},
 		"three" : {
 			"en" : "three",
-			"ru" : "три"
+			"fr" : "trois"
 		},
 		"four" : {
 			"en" : "four",
-			"ru" : "четыре"
+			"fr" : "quatre"
 		}
 	}
 }
@@ -183,22 +183,22 @@ or you could split controllers:
 	"first" : {
 		"one" : {
 			"en" : "one",
-			"ru" : "один"
+			"fr" : "un"
 		},
 		"three" : {
 			"en" : "three",
-			"ru" : "три"
+			"fr" : "trois"
 		}
 	},
 	"second" : {
 		"two" : {
 			"en" : "two",
-			"ru" : "два"
+			"fr" : "deux"
 		},
 		"four" : {
 			"en" : "four",
-			"ru" : "четыре"
-		}	
+			"fr" : "quatre"
+		}
 	}
 }
 ```
@@ -247,15 +247,15 @@ Also, you have different .strings structure in these examples.
 - controllers in one file
 
 en.lproj/FirstAndSecondLocalizationTable.strings
-ru.lproj/FirstAndSecondLocalizationTable.strings
+fr.lproj/FirstAndSecondLocalizationTable.strings
 
 - controllers separated in different files
 
 en.lproj/FirstLocalizationTable.strings
 en.lproj/SecondLocalizationTable.strings
 
-ru.lproj/FirstLocalizationTable.strings
-ru.lproj/SecondLocalizationTable.strings
+fr.lproj/FirstLocalizationTable.strings
+fr.lproj/SecondLocalizationTable.strings
 
 ##Advanced setup.
 
