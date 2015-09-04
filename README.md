@@ -3,7 +3,7 @@ This is a simple tool that makes localization very lightweight and not so boring
 
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
-- [iOSLocalizationManager](#iOSLocalizationManager)
+- [iOSLocalizationManager](#ioslocalizationmanager)
 	- [Requirements](#requirements)
 	- [Features](#features)
 		- [What is implemented?](#what-is-implemented)
@@ -14,11 +14,11 @@ This is a simple tool that makes localization very lightweight and not so boring
 	- [Under the hood and what JSON says](#under-the-hood-and-what-json-says)
 	- [Advanced setup](#advanced-setup)
 		- [Podfile Gemfile Guardfile](#podfile-gemfile-guardfile)
-			- [Content Examples](#content-Examples)
+			- [Content Examples](#content-examples)
 			- [Automatic processes usage](#automatic-processes-usage)
 	- [Further improvements](#further-improvements)
-	- [Contact](#Contact)
-	- [License](#License)
+	- [Contact](#contact)
+	- [License](#license)
 
 ##Requirements
 Ruby 2.0 and later
