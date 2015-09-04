@@ -34,7 +34,7 @@ Ruby 2.0 and later
 - Descriptive methods naming ( Objective-C style )
 
 ###Easy localization
-- Create `localization.json` file
+- Create a `localization.json` file
 ```json
 {
 
@@ -71,7 +71,7 @@ Ruby 2.0 and later
 }
 ```
 
-- Compile localization file: `ruby ios_localization_manager.rb` and [see what happens](#Under-the-hood-and-what-JSON-says)
+- Compile localization file: `ruby ios_localization_manager.rb` and [see what happens](#under-the-hood-and-what-json-says)
 
 - Use auto-generated `ILMStringsManager` methods in Swift:
 
