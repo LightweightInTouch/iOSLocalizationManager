@@ -6,12 +6,12 @@ This is a simple tool that makes localization very lightweight and not so boring
 - [iOSLocalizationManager](#iOSLocalizationManager)
 	- [Requirements](#requirements)
 	- [Features](#features)
-		- [What is implemented?](#what-is-implemented?)
+		- [What is implemented?](#what-is-implemented)
 		- [Easy localization](#easy-localization)
 	- [Install](#install)
 	- [Setup](#setup)
 	- [Preferred Xcode project setup](#preferred-xcode-project-setup)
-	- [Under the hood and what JSON says](#under-the-hood-and-what-JSON-says)
+	- [Under the hood and what JSON says](#under-the-hood-and-what-json-says)
 	- [Advanced setup](#advanced-setup)
 		- [Podfile Gemfile Guardfile](#podfile-gemfile-guardfile)
 			- [Content Examples](#content-Examples)
@@ -261,7 +261,7 @@ ru.lproj/SecondLocalizationTable.strings
 
 If you don't like localization, you could go further in automatic processes
 
-### Podfile/Gemfile/Guardfile
+### Podfile Gemfile Guardfile
 
 You have project and you don't like 
 - Pod manual install (`pod install`)
