@@ -3,22 +3,22 @@ This is a simple tool that makes localization very lightweight and not so boring
 
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
-- [iOSLocalizationManager](#)
-	- [Requirements](#)
-	- [Features](#)
-		- [What is implemented?](#)
-		- [Easy localization](#)
-	- [Install](#)
-	- [Setup](#)
-	- [Preferred Xcode project setup](#)
-	- [Under the hood and what JSON says](#)
-	- [Advanced setup.](#)
-		- [Podfile/Gemfile/Guardfile](#)
-			- [Content Examples](#)
-			- [Automatic processes usage](#)
-	- [Further improvements](#)
-	- [Contact](#)
-	- [License](#)
+- [iOSLocalizationManager](#iOSLocalizationManager)
+	- [Requirements](#Requirements)
+	- [Features](#Features)
+		- [What is implemented?](#What-is-implemented?)
+		- [Easy localization](#Easy-localization)
+	- [Install](#Install)
+	- [Setup](#Setup)
+	- [Preferred Xcode project setup](#Preferred-Xcode-project-setup)
+	- [Under the hood and what JSON says](#Under-the-hood-and-what-JSON-says)
+	- [Advanced setup](#Advanced-setup)
+		- [Podfile Gemfile Guardfile](#Podfile-Gemfile-Guardfile)
+			- [Content Examples](#Content-Examples)
+			--[Automatic processes usage](#Automatic-processes-usage)
+	- [Further improvements](#Further-improvements)
+	- [Contact](#Contact)
+	- [License](#License)
 
 ##Requirements
 Ruby 2.0 and later
@@ -71,7 +71,7 @@ Ruby 2.0 and later
 }
 ```
 
-- Compile localization file: `ruby ios_localization_manager.rb` and [see what happens](##Under-the-hood-and-what-JSON-says)
+- Compile localization file: `ruby ios_localization_manager.rb` and [see what happens](#Under-the-hood-and-what-JSON-says)
 
 - Use auto-generated `ILMStringsManager` methods in Swift:
 
