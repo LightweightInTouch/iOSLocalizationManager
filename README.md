@@ -88,8 +88,8 @@ But you should first understand localization process.
 Suppose that you have several controllers: FirstController and SecondController.
 Suppose that each controller has several strings that you want localize.
 
-FirstController: one, three 
-SecondController: two, four
+- FirstController: one, three
+- SecondController: two, four
 
 You could create JSON as this one:
 
