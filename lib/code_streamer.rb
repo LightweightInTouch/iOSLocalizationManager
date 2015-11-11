@@ -69,7 +69,7 @@ class HeadersCodeStreamer < CodeStreamer
 
 	def prepend_output(file, array)
 	  super
-	  file.write("\n\#import <NSFoundation/NSFoundation.h>\n")
+	  file.write("\n\#import <Foundation/Foundation.h>\n")
 	  file.write("\#import <UIKit/UIKit.h>\n\n")
 
 	  array.map{ |k| Tools.first_upcase_word(k) }.uniq.each do |key|
