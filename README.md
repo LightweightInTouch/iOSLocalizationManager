@@ -35,9 +35,9 @@ Ruby 2.0 and later
 - Descriptive methods naming ( Objective-C style )
 
 ###Options
-- -w - work directory option. It is used as output directory for localization .lproj and code-generated classes
-- -f - localization file. It is used as seed for localization.
-- -p - programming language. `Omit it for ObjectiveC` or use `s(wift)? for swift`
+- `-w` - work directory option. It is used as output directory for localization .lproj and code-generated classes
+- `-f` - localization file. It is used as seed for localization.
+- `-p` - programming language. `Omit it for ObjectiveC` or use `s(wift)? for swift`
 
 Example: `ruby ios_localization_manage.rb -w new_directory/ -f specs/localization_file.json -p s`
 
