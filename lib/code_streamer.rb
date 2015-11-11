@@ -69,6 +69,7 @@ class HeadersCodeStreamer < CodeStreamer
 
 	def prepend_output(file, array)
 	  super
+	  file.write("\n\#import <NSFoundation/NSFoundation.h>\n")
 	  file.write("\#import <UIKit/UIKit.h>\n\n")
 
 	  array.map{ |k| Tools.first_upcase_word(k) }.uniq.each do |key|
@@ -136,7 +137,7 @@ class SwiftCodeStreamer < CodeStreamer
 	def prepend_output(file, array)
 		super
 		# next, we should add class and their methods
-		file.write(%Q'class #{code_class_name}: NSObject {\n\n')
+		file.write(%Q'class #{code_class_name} {\n\n')
 
 	  # add common functions
 	  file.write(%Q'static func getStringFromTable(tableName: String, key: String) -> String {return NSLocalizedString(key, tableName: tableName, value:"", comment:"")}\n')
