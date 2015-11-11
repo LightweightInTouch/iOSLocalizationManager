@@ -7,6 +7,7 @@ This is a simple tool that makes localization very lightweight and not so boring
 	- [Requirements](#requirements)
 	- [Features](#features)
 		- [What is implemented?](#what-is-implemented)
+		- [Options](#options)
 		- [Easy localization](#easy-localization)
 	- [Install](#install)
 	- [Setup](#setup)
@@ -21,7 +22,7 @@ This is a simple tool that makes localization very lightweight and not so boring
 	- [License](#license)
 
 ##Requirements
-Ruby 2.0 and later
+Ruby 2.0 or later
 
 ##Features
 
@@ -32,6 +33,14 @@ Ruby 2.0 and later
 
 - Swift and Objective-C convenient class generator
 - Descriptive methods naming ( Objective-C style )
+
+###Options
+- `-w` - work directory option. It is used as output directory for localization .lproj and code-generated classes
+- `-f` - localization file. It is used as seed for localization.
+- `-p` - programming language. `Omit it for ObjectiveC` or use `s(wift)? for Swift`
+
+Example: `ruby ios_localization_manage.rb -w new_directory/ -f specs/localization_file.json -p s`
+
 
 ###Easy localization
 - Create a `localization.json` file
@@ -348,9 +357,9 @@ It will
 
 ##Further improvements
 
-I want to make this tool simple for usage, really!
-
-Feel free for pull requests, issues, suggesstions, etc.
+- Add Yaml support
+- Add CSV support
+- Add namespaces-based getters for Swift
 
 ##Contact
 Dmitry Lobanov http://github.com/lolgear
