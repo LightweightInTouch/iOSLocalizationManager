@@ -357,9 +357,9 @@ It will
 
 ##Further improvements
 
-I want to make this tool simple for usage, really!
-
-Feel free for pull requests, issues, suggesstions, etc.
+- Add Yaml support
+- Add CSV support
+- Add namespaces-based getters for Swift
 
 ##Contact
 Dmitry Lobanov http://github.com/lolgear
