@@ -22,7 +22,7 @@ This is a simple tool that makes localization very lightweight and not so boring
 	- [License](#license)
 
 ##Requirements
-Ruby 2.0 and later
+Ruby 2.0 or later
 
 ##Features
 
