@@ -25,10 +25,10 @@ require 'fileutils'
 require 'json'
 require 'pp'
 require 'optparse'
-require './lib/tools'
-require './lib/defaults'
-require './lib/code_streamer'
-require './lib/localization_kit'
+require_relative './lib/tools'
+require_relative './lib/defaults'
+require_relative './lib/code_streamer'
+require_relative './lib/localization_kit'
 include LocalizationKit
 class AppleFruitLocalizationManager
 
@@ -109,12 +109,14 @@ class AppleFruitLocalizationManager
 
     data = seeder.extractor.collected_keys_names
     code = code_filepath
-    if swift?
+    if swift?      
       SwiftCodeStreamer.new(code).full_output data
     else
       HeadersCodeStreamer.new(code).full_output data
       SourceCodeStreamer.new(code).full_output data
     end
+
+    puts "done at #{work_directory} \nwith file #{localization_filepath}\n "
   end
 
 end

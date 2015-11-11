@@ -149,7 +149,7 @@ module LocalizationKit
 				return
 			end
 
-			puts "collected localization names: #{@extractor.collected_localization_names}"			
+			# puts "collected localization names: #{@extractor.collected_localization_names}"
 			@extractor.collected_localization_names.each do 
 				|localization|
 				data = extractor.localization_by_name(localization)
