@@ -7,6 +7,7 @@ This is a simple tool that makes localization very lightweight and not so boring
 	- [Requirements](#requirements)
 	- [Features](#features)
 		- [What is implemented?](#what-is-implemented)
+		- [Options](#options)
 		- [Easy localization](#easy-localization)
 	- [Install](#install)
 	- [Setup](#setup)
@@ -32,6 +33,14 @@ Ruby 2.0 and later
 
 - Swift and Objective-C convenient class generator
 - Descriptive methods naming ( Objective-C style )
+
+###Options
+- -w - work directory option. It is used as output directory for localization .lproj and code-generated classes
+- -f - localization file. It is used as seed for localization.
+- -p - programming language. `Omit it for ObjectiveC` or use `s(wift)? for swift`
+
+Example: `ruby ios_localization_manage.rb -w new_directory/ -f specs/localization_file.json -p s`
+
 
 ###Easy localization
 - Create a `localization.json` file
