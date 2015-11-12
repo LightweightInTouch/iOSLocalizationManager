@@ -137,6 +137,7 @@ class SwiftCodeStreamer < CodeStreamer
 	def prepend_output(file, array)
 		super
 		# next, we should add class and their methods
+		file.write("import Foundation \n")
 		file.write(%Q'class #{code_class_name} {\n\n')
 
 	  # add common functions
