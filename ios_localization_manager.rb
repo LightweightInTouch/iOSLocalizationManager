@@ -52,7 +52,7 @@ class AppleFruitLocalizationManager
   end
 
   def localization_filepath
-    File.expand_path(options[:localization_filepath]) || correct_file_path(source)
+    options[:localization_filepath] ? File.expand_path(options[:localization_filepath]) : correct_file_path(source)
   end
 
   def code_filepath
@@ -91,8 +91,9 @@ class AppleFruitLocalizationManager
       return
     end
 
-    unless Dir.exists?(options[:work_directory])
-      FileUtils.mkdir_p(options[:work_directory])
+    # puts "#{self} is #{self.inspect}"
+    unless Dir.exists?(work_directory)
+      FileUtils.mkdir_p(work_directory)
     end
 
     if options[:inspection]
@@ -106,10 +107,9 @@ class AppleFruitLocalizationManager
 
     seeder = LocalizationSeeder.new(localization_filepath, work_directory)
     seeder.collect
-
     data = seeder.extractor.collected_keys_names
     code = code_filepath
-    if swift?      
+    if swift?
       SwiftCodeStreamer.new(code).full_output data
     else
       HeadersCodeStreamer.new(code).full_output data

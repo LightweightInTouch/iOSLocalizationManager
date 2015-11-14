@@ -81,10 +81,9 @@ class HeadersCodeStreamer < CodeStreamer
 	end
 
 	def output(file, array)
-
 	  old_pragma_key = nil
-	  hash.each do |key|
-	    
+	  array.each do |key|
+
 	    table_id  = Tools.first_upcase_word(key)
 	    method_signature = '+ (NSString *)get' + key + 'String'
 
