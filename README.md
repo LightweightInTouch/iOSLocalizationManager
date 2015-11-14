@@ -357,9 +357,10 @@ It will
 
 ##Further improvements
 
-- Add Yaml support
-- Add CSV support
-- Add namespaces-based getters for Swift
+[] Add Yaml support
+[] Add CSV support
+[] Add fluent-styled getters for Swift
+[] Add export/import from/to different formats
 
 ##Contact
 Dmitry Lobanov http://github.com/lolgear
