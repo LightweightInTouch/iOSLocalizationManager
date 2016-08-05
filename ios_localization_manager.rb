@@ -103,17 +103,20 @@ class AppleFruitLocalizationManager
     output_to_files
   end
 
+  # choose coders
+  def coders
+    swift? ? [ClassSwiftCoderStreamer] : [HeadersCodeStreamer, SourceCodeStreamer]
+  end
+
   def output_to_files
 
     seeder = LocalizationSeeder.new(localization_filepath, work_directory)
     seeder.collect
     data = seeder.extractor.collected_keys_names
-    code = code_filepath
-    if swift?
-      SwiftCodeStreamer.new(code).full_output data
-    else
-      HeadersCodeStreamer.new(code).full_output data
-      SourceCodeStreamer.new(code).full_output data
+    filepath = code_filepath
+
+    coders.each do |coder|
+      coder.new(filepath).full_output(data)
     end
 
     puts "done at #{work_directory} \nwith file #{localization_filepath}\n "

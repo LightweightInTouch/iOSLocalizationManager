@@ -10,6 +10,8 @@ module LocalizationKit
 			# data with localization inside
 			# it stored as 'key' => localization_hash		
 			:data_hash,
+			# table names are first keys in hash that we read from json.
+			:table_names
 			)
 		def initialize(path)
 			if path
@@ -27,6 +29,7 @@ module LocalizationKit
 			if valid?
 				hash = MyJSONStreamer.open(@path).to_ruby				
 				# default localization: "en"
+				# delimiter is '/' sign
 				Tools.flatten_hash_of_hashes(hash, "", "", "en")
 			else
 				{}
@@ -152,13 +155,16 @@ module LocalizationKit
 			# puts "collected localization names: #{@extractor.collected_localization_names}"
 			@extractor.collected_localization_names.each do 
 				|localization|
-				data = extractor.localization_by_name(localization)
+
+				# create target directory if doesn't exists				
 				target_directory = localized_directory(localization)
 				unless File.exists? target_directory
 					FileUtils.mkdir_p target_directory
 				end
 
-				# we should split data by collected_table_names				
+				data = extractor.localization_by_name(localization)
+
+				# we should split data by collected_table_names
 				grouped_data = 
 				data.reduce({}) do |hash, (k,v)| 
 					table_key = Tools.first_upcase_word(k)

@@ -139,15 +139,15 @@ class SwiftCodeStreamer < CodeStreamer
 		file.write("import Foundation \n")
 		file.write(%Q'class #{code_class_name} {\n\n')
 
-	  # add common functions
-	  file.write(%Q'static func getStringFromTable(tableName: String, key: String) -> String {return NSLocalizedString(key, tableName: tableName, value:"", comment:"")}\n')
-	  file.write("\n")
-	  # add common localization strings (table names)
-	  array.collect{ |k| Tools.first_upcase_word(k) }.uniq.each do |key|
-	    table_key = key + 'LocalizationTable'
-	    file.write("static var #{table_key} : String = " + %Q'"#{table_key}"' + "\n")
-	  end
-	  file.write("\n")
+		# add common functions
+		file.write(%Q'static func getStringFromTable(tableName: String, key: String) -> String {return NSLocalizedString(key, tableName: tableName, value:"", comment:"")}\n')
+		file.write("\n")
+		# add common localization strings (table names)
+		array.collect{ |k| Tools.first_upcase_word(k) }.uniq.each do |key|
+			table_key = key + 'LocalizationTable'
+			file.write("static var #{table_key} : String = " + %Q'"#{table_key}"' + "\n")
+		end
+		file.write("\n")
 	end
 
 	def output(file, array)
@@ -160,6 +160,69 @@ class SwiftCodeStreamer < CodeStreamer
 	    method_body = %Q({ return getStringFromTable(#{table_key},key:"#{strings_key}")})
 	    file.write(method_signature + method_body + %Q(\n))
 	  end
+	end
+
+	def append_output(file, array)
+		file.write(%Q'\n\n}\n\n')
+	end
+end
+class ClassSwiftCoderStreamer < CodeStreamer
+	def extname 
+		'.swift'
+	end
+	def arrayToHashWithTableNames(array)
+		# convert:
+		# someBigWord -> Some: [{'key':bigWord, 'string':'some_big_word' }]
+		array.reduce({}){|hash, element|
+			hash[Tools.first_upcase_word(element)] ||= []
+			hash[Tools.first_upcase_word(element)] += [{key: Tools.without_first_word(element), string: Tools.to_dashes(element)}]
+			hash
+		}
+	end
+	def prepend_output(file, array)
+		keys_hash = arrayToHashWithTableNames(array)
+		# convert array into something more appropriate.
+		super
+		file.write("import Foundation \n")
+		file.write(%Q'class #{code_class_name} {\n\n')
+		
+		# add common functions
+		file.write(%Q'static func getStringFromTable(tableName: String, key: String) -> String {return NSLocalizedString(key, tableName: tableName, value:"", comment:"")}\n')
+		file.write("\n")
+
+		# unnecessary due to classes
+		# add common localization strings (table names)
+		array.collect{ |k| Tools.first_upcase_word(k) }.uniq.each do |key|
+			table_key = key + 'LocalizationTable'
+			file.write("static let #{table_key} = " + %Q'"#{table_key}"' + "\n")
+		end
+		file.write("\n")
+	end
+
+	def output(file, array)
+		keys_hash = arrayToHashWithTableNames(array)
+
+		keys_hash.each do |k, v|
+		    table_id  = k
+		    table_key = table_id + 'LocalizationTableStrings'
+
+		    current_class_name = table_id + 'Strings'
+		    class_declaration = %Q'class #{current_class_name} {\n\n'
+		    class_ending = %Q'\n\n}\n\n'
+		    file.write(class_declaration)
+
+		    v.sort{|a,b| a[:key]<=>b[:key]}.each do |hash|
+				key = hash[:key]
+				strings_key = hash[:string]
+
+			    #function_name = 'get' + key + 'String'
+			    function_name = key
+			    method_signature = 'static func ' + function_name + '()' + ' -> String '
+			    method_body = %Q({ return getStringFromTable(#{table_key},key:"#{strings_key}")})
+			    file.write(method_signature + method_body + %Q(\n))
+		    end
+		    file.write(class_ending)
+		end
 	end
 
 	def append_output(file, array)

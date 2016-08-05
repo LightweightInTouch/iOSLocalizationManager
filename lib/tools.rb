@@ -13,12 +13,16 @@ module Tools
 		end
 
 		def first_upcase_word(string)
-		  string[/^([^a-z][a-z]+)/].sub(/^_/,'')
+			string[/^([^a-z][a-z]+)/].sub(/^_/,'')
+		end
+
+		def without_first_word(string)
+			string.sub(string[/^([^a-z][a-z]+)/],'')
 		end
 
 		# convert cases
 		def to_dashes(string)
-		  downcase_first_letter(string).gsub(/([A-Z])/){|m| '_' + m.downcase}
+			downcase_first_letter(string).gsub(/([A-Z])/){|m| '_' + m.downcase}
 		end
 
 		def to_camel(string)
