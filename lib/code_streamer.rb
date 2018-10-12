@@ -110,8 +110,8 @@ class SourceCodeStreamer < CodeStreamer
 	  file.write "\#import " + %Q("#{code_class_name}.h") + "\n\n"
 	  file.write "@implementation #{code_class_name}\n\n"
 
-	  file.write %Q(NSString* getStringFromTable(NSString* tableName, NSString* key){return NSLocalizedStringFromTable(key, tableName, @"");}\n)
-	  file.write %Q(NSString* getStringFromTableWithKey(NSString* tableName, NSString* key){return NSLocalizedStringFromTable(key, tableName, @"");}\n)
+	  file.write %Q(NSString* getStringFromTable(NSString* tableName, NSString* key, NSBundle* bundle){return NSLocalizedStringFromTableInBundle(key, tableName, bundle, @"");}\n)
+	  file.write %Q(NSString* getStringFromTableWithClass(NSString* tableName, NSString* key, Class class){return getStringFromTable(tableName, key, [NSBundle bundleForClass:class]);}\n)
 	end
 	def output(file, array)
 		array.each do |key|
@@ -119,7 +119,7 @@ class SourceCodeStreamer < CodeStreamer
 	    table_id  = Tools.first_upcase_word(key)
 	    table_key = table_id + 'LocalizationTable'
 	    method_signature = '+ (NSString *)get' + key + 'String'
-	    method_body = %Q({return getStringFromTable(#{table_key},\@"#{strings_key}");})
+	    method_body = %Q({return getStringFromTableWithClass(#{table_key}, \@"#{strings_key}", self);})
 	    file.write(method_signature + method_body + %Q(\n))
 	  end
 	end
