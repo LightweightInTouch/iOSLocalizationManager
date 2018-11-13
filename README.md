@@ -1,4 +1,4 @@
-#iOSLocalizationManager
+# iOSLocalizationManager
 This is a simple tool that makes localization very lightweight and not so boring.
 
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
@@ -21,20 +21,20 @@ This is a simple tool that makes localization very lightweight and not so boring
 	- [Contact](#contact)
 	- [License](#license)
 
-##Requirements
+## Requirements
 Ruby 2.0 or later
 
-##Features
+## Features
 
 - Automatic processes setup
 - Swift and Objective-C support (see below examples)
 
-###What is implemented?
+### What is implemented?
 
 - Swift and Objective-C convenient class generator
 - Descriptive methods naming ( Objective-C style )
 
-###Options
+### Options
 - `-w` - work directory option. It is used as output directory for localization .lproj and code-generated classes
 - `-f` - localization file. It is used as seed for localization.
 - `-p` - programming language. `Omit it for ObjectiveC` or use `s(wift)? for Swift`
@@ -42,7 +42,7 @@ Ruby 2.0 or later
 Example: `ruby ios_localization_manage.rb -w new_directory/ -f specs/localization_file.json -p s`
 
 
-###Easy localization
+### Easy localization
 - Create a `localization.json` file
 ```json
 {
@@ -110,7 +110,7 @@ Example: `ruby ios_localization_manage.rb -w new_directory/ -f specs/localizatio
     [controller setDeleteButtonText:[ILMStringsManager getGeneralDeleteButtonTitleString]];
 ```
 
-##Install
+## Install
 
 For now:
 
@@ -118,14 +118,14 @@ For now:
 2. make a link to `ios_localization_manager.rb`
 3. copy this link to destination directory with `localization.json`
 
-##Setup
+## Setup
 1. As you installed `iOSLocalizationManager` (see above Install section), you could start to use it.
 2. Create file `localization.json` and put correct localization json into this file.
 3. Once you are ready, you could run command `ruby ios_localization_manager.rb [options]` in your localization directory.
 As a result you will see auto-generated (not-auto, but it could be done via `guard` tool) class with localization (`ILMStringsManager`)
 4. Ta-da! You create your first localization!
 
-##Preferred Xcode project setup
+## Preferred Xcode project setup
 1. Create directory `Resources`
 2. Create directory `Localization`
 3. Put `ios_localization_manager.rb` link (You should not put original file!) into this directory.
@@ -136,7 +136,7 @@ As a result you will see auto-generated (not-auto, but it could be done via `gua
 8. Don't forget to INCLUDE new localization tables (.strings) files in `Localization` directory to your project
 9. And, of course, ADD `ILMStringsManager` class (`h,m` or `swift`) to your project as convenient accessor to localization.
 
-##Under the hood and what JSON says
+## Under the hood and what JSON says
 Too complex setup, I know, but if you still here, I will explain auto-generation features and json structure.
 
 First of all, I don't like localization, because it is annoying. 
@@ -266,7 +266,7 @@ en.lproj/SecondLocalizationTable.strings
 fr.lproj/FirstLocalizationTable.strings
 fr.lproj/SecondLocalizationTable.strings
 
-##Advanced setup.
+## Advanced setup.
 
 If you don't like localization, you could go further in automatic processes
 
@@ -355,16 +355,16 @@ It will
 - install new gems into `{.ruby-version}@{.ruby-gemset}` (hit save for Gemfile)
 - change localization (hit save for localization.json)
 
-##Further improvements
+## Further improvements
 
-[] Add Yaml support
-[] Add CSV support
-[] Add fluent-styled getters for Swift
-[] Add export/import from/to different formats
+- [ ] Add Yaml support
+- [ ] Add CSV support
+- [ ] Add fluent-styled getters for Swift
+- [ ] Add export/import from/to different formats
 
-##Contact
+## Contact
 Dmitry Lobanov http://github.com/lolgear
 
-##License
+## License
 iOSLocalizationManager is available under the MIT License.
 See the [License](LICENSE) file for more info.
