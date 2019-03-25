@@ -1,0 +1,27 @@
+---
+hello:
+  world:
+    en: hello world
+    fr: bonjour le monde
+general:
+  deleteButtonTitle:
+    en: delete
+    fr: effacer
+padLockScreenLock:
+  titleLabelText:
+    en: title
+    fr: titre
+  subtitleDefaultText:
+    en: default text
+    fr: texte par défaut
+  subtitleAttemptsLeftPlural:
+    en: left
+    fr: ''
+  subtitleAttemptsSingle:
+    en: left
+    fr: ''
+another:
+  unrecognized:
+    en: en
+    ru: ru
+    fr: fr
