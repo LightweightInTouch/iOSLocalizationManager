@@ -39,7 +39,7 @@ Ruby 2.0 or later
 - `-f` - localization file. It is used as seed for localization.
 - `-p` - programming language. `Omit it for ObjectiveC` or use `s(wift)? for Swift`
 
-Example: `ruby ios_localization_manage.rb -w new_directory/ -f specs/localization_file.json -p s`
+Example: `ruby ios_localization_manager.rb -w new_directory/ -f specs/localization_file.json -p s`
 
 
 ### Easy localization
