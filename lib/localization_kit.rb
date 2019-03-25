@@ -1,6 +1,6 @@
 require 'fileutils'
 require_relative './tools'
-require_relative './json_streamer'
+require_relative './streamer'
 include Helpers
 module LocalizationKit
   class LocalizationExtractor
@@ -10,7 +10,7 @@ module LocalizationKit
       # data with localization inside
       # it stored as 'key' => localization_hash
       :data_hash,
-      # table names are first keys in hash that we read from json.
+      # table names are first keys in hash that we read from file ( json / yaml ).
       :table_names
       )
     def initialize(path)
@@ -22,12 +22,12 @@ module LocalizationKit
     end
 
     def valid?
-      @path && File.exists?(@path) && File.file?(@path) && MyJSONStreamer.open(@path)
+      @path && File.exists?(@path) && File.file?(@path) && MyStreamer.open(@path)
     end
 
     def extract
       if valid?
-        hash = MyJSONStreamer.open(@path).to_ruby
+        hash = MyStreamer.open(@path).to_ruby
         # default localization: "en"
         # delimiter is '/' sign
         Tools.flatten_hash_of_hashes(hash, "", "", "en")
