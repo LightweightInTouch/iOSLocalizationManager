@@ -1,10 +1,10 @@
-module Helper
+module Helpers
   require 'json'
   require 'yaml'
   # this class help us to create objects or read them from anything
   # simple usage:
   # my_string = 'string'
-  # streamer = MyStreamer.open(my_string, parser: 'json') # or nil if not valid stream
+  # streamer = MyStreamer.open(my_string, parser: '.json') # or nil if not valid stream
   # streamer.write([])
   # streamer.save!
   # puts my_string # my_string must be '\[\]'
@@ -19,12 +19,16 @@ module Helper
       def extname(file)
         File.extname(file)
       end
-      def by_filename(file)
-        case extname(file)
-        when 'json' JSONParser.new
-        when 'yml' YAMLParser.new
-        when 'yaml' YAMLParser.new
+      def by_extname(name)
+        case name
+        when '.json'
+          JSONParser.new
+        when '.yml', '.yaml'
+          YAMLParser.new
         end
+      end
+      def by_filename(file)
+        by_extname extname(file)
       end
     end
     def load_file(file)
@@ -55,7 +59,7 @@ module Helper
         YAML.load(string)
       end
       def to_format(object)
-        object.pretty_generate(object)
+        object.to_yaml
       end
     end
   end
@@ -86,9 +90,9 @@ module Helper
         begin
           # file, try to open it
           if File.file? stream
-            @parser = Parser.by_filename(options[:parser]) || Parser.by_filename(stream)
+            @parser = Helpers::Parser.by_extname(options[:parser]) || Helpers::Parser.by_filename(stream)
             File.open(stream, 'r') do |infile|
-              @rubish_insider = @parser.load(infile)
+              @rubish_insider = @parser.load_file(infile)
             end
 
           # try to read it as string
@@ -161,7 +165,7 @@ module Helper
 
     # ------------------ Class Transform ------------------ #
     def to_s
-      'my #{@parser} streamer'
+      "my #{@parser} streamer"
     end
 
     def inspect
